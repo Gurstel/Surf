@@ -825,7 +825,7 @@ p {
 }
 
 .ud-about-content {
-  max-width: 500px;
+  max-width: 700px;
 }
 
 .ud-about-content .tag {
@@ -864,10 +864,27 @@ p {
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+.ud-about-image {
+  display: none; /* Default state: hidden */
+
+}
+
+@media only screen and (min-width: 992px) {
   .ud-about-image {
+    display: block; 
     text-align: center;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right: 5%;
+    
+
   }
+  .ud-about-image img {
+    height: 100%;
+    width: 100%;
+    margin:auto;
+}
 }
 
 /* ===== Pricing CSS ===== */
