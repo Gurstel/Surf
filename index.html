@@ -25,9 +25,6 @@
   <meta property="twitter:title" content="Surf Onboarding" />
   <meta property="twitter:description" content="Surf Onboarding Team" />
   <meta property="twitter:image" content="https://uideck.com/wp-content/uploads/2021/09/play-meta-bs.jpg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!--====== Favicon Icon ======-->
   <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/svg" />
@@ -39,36 +36,187 @@
   <link rel="stylesheet" href="assets/css/ud-styles.css" />
 
   <style>
-    /* Popup Background */
-    .popup {
-        display: none; /* Ensure the popup is hidden by default */
-        position: fixed; /* Fix to viewport */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-    }
+    body .popup {
+    visibility: hidden; /* Initially hidden */
+    opacity: 0; /* Initially fully transparent */
+    position: fixed; /* Stay in place */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    z-index: 10000; /* Sit on top */
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    display: flex; /* Use flexbox layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    transition: visibility 0s, opacity 0.3s ease; /* Smooth transition for visibility and opacity */
+    touch-action: none; /* Disable gestures that may interfere with the popup */
+}
 
-    /* Popup Content */
-    .popup-content {
-        background-color: var(--white);
-        padding: 30px;
-        border-radius: 10px;
-        width: 350px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
+body .popup.show {
+    visibility: visible; /* Make visible */
+    opacity: 1; /* Fully opaque */
+    z-index: 10000;
+}
 
-    /* Close Button */
+body .popup .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px #000;
+    width: 90%; /* Adjust width for mobile compatibility */
+    max-width: 400px; /* Limit max width for larger screens */
+    text-align: center;
+    position: relative; /* Ensure close button is positioned relative to this container */
+}
+
+body .popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--heading-color); /* Matches the color theme */
+}
+
+body .popup .close-btn:hover {
+    color: var(--primary-color);
+}
+
+body .popup .popup-content form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+body .popup .popup-content form button[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+body .popup .popup-content form button[type="submit"]:hover {
+    background-color: var(--heading-color);
+}
+
+body .popup .success-message {
+    display: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 20px;
+}
+    /*
+body .popup {
+    visibility: hidden; 
+    opacity: 0;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1001;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    transition: visibility 0s, opacity 0.3s ease;}
+
+body .popup.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+body .popup .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px #000;
+    width: 90%; 
+    max-width: 400px;
+    text-align: center;
+    position: relative; 
+}
+
+body .popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--heading-color); 
+}
+
+body .popup .close-btn:hover {
+    color: var(--primary-color);
+}
+
+body .popup .popup-content form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+body .popup .popup-content form button[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+body .popup .popup-content form button[type="submit"]:hover {
+    background-color: var(--heading-color);
+}
+
+body .popup .success-message {
+    display: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 20px;
+}*/
+
+    /*
+        body .popup {
+          display: none; 
+          position: fixed; 
+          top: 0;
+          left: 0;
+          width: 100vw; 
+          height: 100vh;
+          z-index: 1001;
+          background-color: rgba(0, 0, 0, 0.5); 
+          overflow: hidden;
+          justify-content: center; 
+          align-items: center;
+      }
+
+      body .popup .popup-content {
+          position: relative;
+          padding: 20px;
+
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0px 0px 10px 0px #000;
+          width: 300px;
+          text-align: center;
+          z-index: 1002;
+      }
     .popup-content .close-btn {
         position: absolute;
         top: 10px;
@@ -80,7 +228,6 @@
         cursor: pointer;
     }
 
-    /* Input Field */
     .popup-content input[type="email"] {
         width: 100%;
         padding: 12px;
@@ -99,7 +246,6 @@
         outline: none;
     }
 
-    /* Submit Button */
     .popup-content button[type="submit"] {
         padding: 12px 20px;
         background-color: var(--primary-color);
@@ -117,13 +263,12 @@
         background-color: var(--heading-color);
     }
 
-    /* Success Message */
     .success-message {
         font-size: 20px;
         font-weight: bold;
         color: var(--heading-color);
-        display: none; /* Ensure it's hidden initially */
-    }
+        display: none;
+    }*/
 </style>
 </head>
 <style>
@@ -141,6 +286,8 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    margin: 0; /* Reset any margin from parent elements */
+    padding: 0; /* Reset any padding from parent elements */
   }
 
   /* Popup Content */
@@ -306,8 +453,8 @@
               <div class="popup" id="popup">
                 <div class="popup-content">
                   <button class="close-btn" onclick="closePopup()">&times</button>
-                  <h2 style="font-size: 24px; font-weight: 700; color: var(--heading-color); margin-bottom: 20px;">Join
-                    Waitlist</h2>
+                  <h2 style="font-size: 24px; font-weight: 700; color: var(--heading-color); margin-bottom: 20px;">
+                    Join Waitlist</h2>
                   <form name="submit-to-google-sheet">
                     <input name="email" type="email" placeholder="Email" required>
                     <button type="submit">Send</button>
@@ -1269,15 +1416,45 @@
     });
 
     function openPopup() {
-      window.scrollTo(0, 0); // Scroll to the top of the page
-      popup.style.display = 'flex'; /* Show the popup */
+    const popup = document.getElementById('popup');
+    popup.classList.add('show');
+    document.body.style.overflow = 'hidden'; // Disable scrolling on the main page
+}
+
+function closePopup() {
+    const popup = document.getElementById('popup');
+    popup.classList.remove('show');
+    document.body.style.overflow = ''; // Re-enable scrolling on the main page
+    successMessage.style.display = 'none'; 
+
+}
+
+// Close the popup if the user clicks outside of the popup content
+window.addEventListener('click', function(event) {
+    const popup = document.getElementById('popup');
+    if (event.target === popup) {
+        closePopup();
+    }
+});
+    /*
+
+    function openPopup() {
+      document.getElementById('popup').style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Disable scrolling
+
     }
 
     function closePopup() {
-      popup.style.display = 'none'; /* Hide the popup */
-      form.style.display = 'block'; /* Reset form visibility when closing */
-      successMessage.style.display = 'none'; /* Hide success message when closing */
+      document.getElementById('popup').style.display = 'none';
+      document.body.style.overflow = ''; // Re-enable scrolling
+      successMessage.style.display = 'none'; 
     }
+
+    window.addEventListener('click', function(event) {
+    if (event.target === document.getElementById('popup')) {
+        closePopup();
+    }
+});*/
     // ==== for menu scroll
     const pageLink = document.querySelectorAll(".ud-menu-scroll");
 
