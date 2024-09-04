@@ -37,83 +37,108 @@
 
   <style>
     body .popup {
-    visibility: hidden; /* Initially hidden */
-    opacity: 0; /* Initially fully transparent */
-    position: fixed; /* Stay in place */
-    top: 0;
-    left: 0;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    z-index: 10000; /* Sit on top */
-    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
-    display: flex; /* Use flexbox layout */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    transition: visibility 0s, opacity 0.3s ease; /* Smooth transition for visibility and opacity */
-    touch-action: none; /* Disable gestures that may interfere with the popup */
-}
+      visibility: hidden;
+      /* Initially hidden */
+      opacity: 0;
+      /* Initially fully transparent */
+      position: fixed;
+      /* Stay in place */
+      top: 0;
+      left: 0;
+      width: 100vw;
+      /* Full viewport width */
+      height: 100vh;
+      /* Full viewport height */
+      z-index: 10000;
+      /* Sit on top */
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Black background with opacity */
+      display: flex;
+      /* Use flexbox layout */
+      justify-content: center;
+      /* Center content horizontally */
+      align-items: center;
+      /* Center content vertically */
+      transition: visibility 0s, opacity 0.3s ease;
+      /* Smooth transition for visibility and opacity */
+      touch-action: none;
+      /* Disable gestures that may interfere with the popup */
+    }
 
-body .popup.show {
-    visibility: visible; /* Make visible */
-    opacity: 1; /* Fully opaque */
-    z-index: 10000;
-}
+    body .popup.show {
+      visibility: visible;
+      /* Make visible */
+      opacity: 1;
+      /* Fully opaque */
+      z-index: 10000;
+    }
 
-body .popup .popup-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px 0px #000;
-    width: 90%; /* Adjust width for mobile compatibility */
-    max-width: 400px; /* Limit max width for larger screens */
-    text-align: center;
-    position: relative; /* Ensure close button is positioned relative to this container */
-}
+    body .popup .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px 0px #000;
+      width: 90%;
+      /* Adjust width for mobile compatibility */
+      max-width: 400px;
+      /* Limit max width for larger screens */
+      text-align: center;
+      position: relative;
+      /* Ensure close button is positioned relative to this container */
+    }
 
-body .popup .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: var(--heading-color); /* Matches the color theme */
-}
+    body .popup .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--heading-color);
+      /* Matches the color theme */
+    }
 
-body .popup .close-btn:hover {
-    color: var(--primary-color);
-}
+    body .popup .close-btn:hover {
+      color: var(--primary-color);
+    }
 
-body .popup .popup-content form input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+    body .popup .popup-content form input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
 
-body .popup .popup-content form button[type="submit"] {
-    background-color: var(--primary-color);
-    color: var(--white);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-}
+    body .popup .popup-content form button[type="submit"] {
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
 
-body .popup .popup-content form button[type="submit"]:hover {
-    background-color: var(--heading-color);
-}
+    body .popup .popup-content form button[type="submit"]:hover {
+      background-color: var(--heading-color);
+    }
 
-body .popup .success-message {
-    display: none;
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-top: 20px;
-}
+    body .popup .success-message {
+      display: none;
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .ud-main-btn.ud-white-btn {
+        display: none;
+      }
+    }
+
     /*
 body .popup {
     visibility: hidden; 
@@ -269,7 +294,7 @@ body .popup .success-message {
         color: var(--heading-color);
         display: none;
     }*/
-</style>
+  </style>
 </head>
 <style>
   /* Popup Background */
@@ -286,8 +311,10 @@ body .popup .success-message {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    margin: 0; /* Reset any margin from parent elements */
-    padding: 0; /* Reset any padding from parent elements */
+    margin: 0;
+    /* Reset any margin from parent elements */
+    padding: 0;
+    /* Reset any padding from parent elements */
   }
 
   /* Popup Content */
@@ -1420,26 +1447,26 @@ body .popup .success-message {
     });
 
     function openPopup() {
-    const popup = document.getElementById('popup');
-    popup.classList.add('show');
-    document.body.style.overflow = 'hidden'; // Disable scrolling on the main page
-}
-
-function closePopup() {
-    const popup = document.getElementById('popup');
-    popup.classList.remove('show');
-    document.body.style.overflow = ''; // Re-enable scrolling on the main page
-    successMessage.style.display = 'none'; 
-
-}
-
-// Close the popup if the user clicks outside of the popup content
-window.addEventListener('click', function(event) {
-    const popup = document.getElementById('popup');
-    if (event.target === popup) {
-        closePopup();
+      const popup = document.getElementById('popup');
+      popup.classList.add('show');
+      document.body.style.overflow = 'hidden'; // Disable scrolling on the main page
     }
-});
+
+    function closePopup() {
+      const popup = document.getElementById('popup');
+      popup.classList.remove('show');
+      document.body.style.overflow = ''; // Re-enable scrolling on the main page
+      successMessage.style.display = 'none';
+
+    }
+
+    // Close the popup if the user clicks outside of the popup content
+    window.addEventListener('click', function (event) {
+      const popup = document.getElementById('popup');
+      if (event.target === popup) {
+        closePopup();
+      }
+    });
     /*
 
     function openPopup() {
